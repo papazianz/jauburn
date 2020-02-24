@@ -158,7 +158,7 @@ JbParserTest >> testFunctionCallStatement [
 { #category : #'tests-expressions' }
 JbParserTest >> testIdentifierExpression [
 
-	self assert: (self parse: 's1mpl3' rule: #identifierExpression) identifier equals: 's1mpl3'.
+	self assert: (self parse: 's1mpl3' rule: #identifier)  equals: 's1mpl3'.
 	self assert: (self parse: 'a___11bADWQ' rule: #identifierExpression) identifier equals: 'a___11bADWQ'.
 	self fail: 'a?' rule: #identifierExpression.
 	self fail: '12monkeys' rule: #identifierExpression
@@ -193,6 +193,17 @@ JbParserTest >> testIfStatement [
 	stmt := self parse: 'if (x == 1) {}' rule: #ifStatement.
 	self assert: stmt condition operator equals: '=='.
 	self assert: stmt trueStatements isEmpty
+]
+
+{ #category : #tests }
+JbParserTest >> testIsWhileNode [
+
+	| stmt |
+	
+	stmt := self parse: 'while (x <= 1) { sum = sum + x; x = x + 1;}' rule: #whileStatement.
+	self assert: (stmt isKindOf: JbWhileLoopNode).
+	self assert: stmt condition operator equals: '<='.
+	self assert: stmt trueStatements size equals: 2.
 ]
 
 { #category : #'tests-expressions' }

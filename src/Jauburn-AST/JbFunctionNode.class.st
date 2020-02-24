@@ -2,6 +2,7 @@ Class {
 	#name : #JbFunctionNode,
 	#superclass : #Object,
 	#instVars : [
+		'name',
 		'body',
 		'parameters'
 	],
@@ -16,6 +17,25 @@ JbFunctionNode >> body [
 { #category : #accessing }
 JbFunctionNode >> body: anObject [
 	body := anObject
+]
+
+{ #category : #'as yet unclassified' }
+JbFunctionNode >> evaluateIn: environment [
+
+	^JbFunction new 
+		parameters: self parameters;
+		body: self body;
+		environment: environment; yourself.
+]
+
+{ #category : #accessing }
+JbFunctionNode >> name [
+	^ name
+]
+
+{ #category : #accessing }
+JbFunctionNode >> name: anObject [
+	name := anObject
 ]
 
 { #category : #accessing }
