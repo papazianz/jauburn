@@ -87,10 +87,9 @@ JbInterpreter >> printBinding [
 { #category : #primitives }
 JbInterpreter >> printlnBinding [ 
 
-	|result|
 	^#println -> [ :value | (value isString) 
 						ifTrue: [ self transcript show: value; cr] 
-						ifFalse: [ self transcript show: (result := value printString, '\n') ]]
+						ifFalse: [ self transcript show: value printString; cr]]
 ]
 
 { #category : #api }

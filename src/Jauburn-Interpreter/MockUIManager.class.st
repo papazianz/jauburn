@@ -14,13 +14,6 @@ MockUIManager >> initialize [
 	^self
 ]
 
-{ #category : #updating }
-MockUIManager >> input: aString [
-	"comment stating purpose of message"
-
-	^inputContents
-]
-
 { #category : #accessing }
 MockUIManager >> inputContents [
 	^ inputContents

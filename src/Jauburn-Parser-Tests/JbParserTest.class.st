@@ -200,9 +200,9 @@ JbParserTest >> testIsWhileNode [
 
 	| stmt |
 	
-	stmt := self parse: 'while (x <= 1) { sum = sum + x; x = x + 1;}' rule: #whileStatement.
+	stmt := self parse: 'while(x < 11) {y = y + x; x = x + 1;}' rule: #whileStatement.
 	self assert: (stmt isKindOf: JbWhileLoopNode).
-	self assert: stmt condition operator equals: '<='.
+	self assert: stmt condition operator equals: '<'.
 	self assert: stmt trueStatements size equals: 2.
 ]
 
